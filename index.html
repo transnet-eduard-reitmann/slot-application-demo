@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Access Application Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="form-container">
+            <header class="form-header">
+                <h1>Network Access Application Form</h1>
+                <p>Please fill out all required fields marked with an asterisk (*)</p>
+            </header>
+			
+            <form id="applicationForm" novalidate>
+			
+                <!-- 1. Applicant information and services required -->
+                <section class="form-section">
+				
+					<div class="instructions">
+						<h4>IMPORTANT NOTICE:</h4>
+						<p>This document contains Personal Information as defined in the Protection of Personal Information Act, 2013 (POPIA). All personal information contained herein will be processed, protected and stored in accordance with all the conditions and requirements of the POPIA Act.</p><br>
+						<p><strong>Note:</strong> All the required Annexures and Forms specified in the Draft Network Statement must also be completed (in addition to this Network Access Application Form).</p>
+					</div>
+				
+                    <h2>1. Applicant Information and Services Required</h2>
+                    
+                    <div class="form-group">
+                        <label for="applicantName">Applicant Name *</label>
+                        <input type="text" id="applicantName" name="applicantName" required 
+                               data-validation="text" data-min-length="2" value="Coal Transport Ltd">
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="applicantWebsite">Applicant Website</label>
+                        <input type="text" id="applicantWebsite" name="applicantWebsite" 
+                               placeholder="Enter website URL" value="www.coaltransport.co.za">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyRegNumber">Company Registration Number *</label>
+                        <input type="text" id="companyRegNumber" name="companyRegNumber" required 
+                               placeholder="Enter registration number" value="2020/123456/07">
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Physical Address</h3>
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="buildingNumber">Building Number and Name</label>
+                                <input type="text" id="buildingNumber" name="buildingNumber" required 
+                                       data-validation="text" data-min-length="1" placeholder="Enter building number" value="15">
+                                <span class="error-message"></span>       
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="street">Street *</label>
+                                <input type="text" id="street" name="street" required 
+                                    placeholder="Enter street name" value="123 Coal Street">
+                                <span class="error-message"></span>
+                            </div>
+                        </div> 
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required 
+                                       placeholder="Enter city" value="Johannesburg">
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="province">Province *</label>
+                                <input type="text" id="province" name="province" required 
+                                       placeholder="Enter province" value="Gauteng">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Primary Company Contact Person</h3>
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="contactSurname">Surname *</label>
+                                <input type="text" id="contactSurname" name="contactSurname" required 
+                                       placeholder="Enter surname" value="Smith">
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactName">Name *</label>
+                                <input type="text" id="contactName" name="contactName" required 
+                                       placeholder="Enter name" value="John">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="contactNumber">Contact Number *</label>
+                                <input type="tel" id="contactNumber" name="contactNumber" required 
+                                       placeholder="Enter contact number" value="+27 11 123 4567">
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">E-Mail Address *</label>
+                                <input type="email" id="contactEmail" name="contactEmail" required 
+                                       placeholder="Enter email address" value="john.smith@coaltransport.co.za">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Rail Network Slot / Route Details Applied For -->
+                <section class="form-section">
+                    <h2>2. Rail Network Slot / Route Details Applied For</h2>
+                    <p class="note"><strong>Note:</strong> This Network Access Application Form must be completed for each route in case of multiple route applications.</p>
+                    </br>
+					
+                    <div class="sub-section">
+                        <h3>Route Origin</h3>
+
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="originType">Origin Type</label>
+                                <select id="originType" name="originType">
+                                    <option value="Station Yard Siding" selected>Station Yard Siding</option>
+                                    <option value="Terminal">Terminal</option>
+                                    <option value="Port">Port</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="originName">Name</label>
+                                <input type="text" id="originName" name="originName" 
+                                       placeholder="Enter origin name" value="Mpumalanga Coalfields">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="originSidingNumber">Siding Number</label>
+                                <input type="text" id="originSidingNumber" name="originSidingNumber" 
+                                       placeholder="Enter siding number" value="Siding A">
+                            </div>
+                        </div>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="originNearestTown">Nearest Town</label>
+                                <input type="text" id="originNearestTown" name="originNearestTown" 
+                                       placeholder="Enter nearest town" value="Ermelo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="originProvince">Province</label>
+                                <input type="text" id="originProvince" name="originProvince" 
+                                       placeholder="Enter province" value="Mpumalanga">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="originGPSCoordinates">GPS Co-ordinates</label>
+                                <input type="text" id="originGPSCoordinates" name="originGPSCoordinates" 
+                                    placeholder="Enter GPS coordinates" value="-26.5333, 29.9833">
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Route Destination</h3>
+                        <p class="note"><strong>Note:</strong> For Import/export destination, the TOC must ensure that they have the necessary loading/offloading capacity. For cross-border traffic proper clearance will be required.</p>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="destinationType">Destination Type</label>
+                                <select id="destinationType" name="destinationType">
+                                    <option value="Station Yard Siding" selected>Station Yard Siding</option>
+                                    <option value="Terminal">Terminal</option>
+                                    <option value="Port">Port</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="destinationName">Name</label>
+                                <input type="text" id="destinationName" name="destinationName" 
+                                       placeholder="Enter destination name" value="Richards Bay Coal Terminal">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="destinationSidingNumber">Siding Number</label>
+                                <input type="text" id="destinationSidingNumber" name="destinationSidingNumber" 
+                                       placeholder="Enter siding number" value="Siding B">
+                            </div>
+                        </div>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="destinationNearestTown">Nearest Town</label>
+                                <input type="text" id="destinationNearestTown" name="destinationNearestTown" 
+                                       placeholder="Enter nearest town" value="Richards Bay">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="destinationProvince">Province</label>
+                                <input type="text" id="destinationProvince" name="destinationProvince" 
+                                       placeholder="Enter province" value="KwaZulu-Natal">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="destinationGPSCoordinates">GPS Co-ordinates</label>
+                                <input type="text" id="destinationGPSCoordinates" name="destinationGPSCoordinates" 
+                                    placeholder="Enter GPS coordinates" value="-28.7806, 32.0381">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="routeDescription">Brief description of route</label>
+                            <textarea id="routeDescription" name="routeDescription" rows="4">Train to be loaded at Siding A in Mpumalanga Coalfields and routed via Ermelo to be combined into a 200-wagon train and depart to RBCT on the Coal line.</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Frequency required</h3>
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="forwardFrequency">Forward leg frequency</label>
+                                <select id="forwardFrequency" name="forwardFrequency">
+                                    <option value="Daily" selected>Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="numberOfForwardSlots">Number of forward slots</label>
+                                <input type="number" id="numberOfForwardSlots" name="numberOfForwardSlots" 
+                                       placeholder="Enter number of slots" value="5">
+                            </div>
+                        </div>
+
+                        <div class="two-column">                            
+                            <div class="form-group">
+                                <label for="returnFrequency">Return leg frequency</label>
+                                <select id="returnFrequency" name="returnFrequency">
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly" selected>Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="numberOfReturnSlots">Number of return slots</label>
+                                <input type="number" id="numberOfReturnSlots" name="numberOfReturnSlots" 
+                                       placeholder="Enter number of slots" value="5">
+                            </div>
+                        </div>
+                        
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label for="slotStartDate">Slot Request Period: Starting Date</label>
+                                <input type="date" id="slotStartDate" name="slotStartDate" 
+                                       value="2023-11-01">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="slotCompletionDate">Slot Request Period: Completion Date</label>
+                                <input type="date" id="slotCompletionDate" name="slotCompletionDate" 
+                                       value="2024-10-31">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Train Configuration and Operating Specifications -->
+                <section class="form-section">
+                    <h2>3. Train Configuration and Operating Specifications</h2>
+                    <p class="note"><strong>Note:</strong> One application form for network capacity must be completed for each route applied for (specify all the required information listed below for each section of the route where possible)</p>
+                    
+                    <div class="sub-section">
+                        <h3>Traction Type(s)</h3>
+                        
+                        <div class="form-group">
+                            <label>Please indicate the intended train traction types required from end to end. You may select more than one.</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionDiesel" name="tractionDiesel" checked>
+                                    Diesel/Diesel-Electric
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionElectric25kV" name="tractionElectric25kV">
+                                    Electric 25kV AC
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionElectric3kV" name="tractionElectric3kV">
+                                    Electric 3kV DC
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionDualVoltage" name="tractionDualVoltage">
+                                    Electric Dual Voltage (3KV DC/25KV AC)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionElectric50kV" name="tractionElectric50kV">
+                                    Electric 50kV AC
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="tractionOther" name="tractionOther">
+                                    Other (Specify)
+                                </label>
+                                <input type="text" id="tractionOtherSpecify" name="tractionOtherSpecify" 
+                                       placeholder="Specify other traction type" style="margin-top: 5px;">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tractionConfiguration">Traction Configuration</label>
+                            <select id="tractionConfiguration" name="tractionConfiguration">
+                                <option value="Head-End" selected>Head-End</option>
+                                <option value="Distributed Power">Distributed Power</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serviceDesign">Service Design: Is the proposed service existing or a new service?</label>
+                            <select id="serviceDesign" name="serviceDesign">
+                                <option value="Yes" selected>Yes (Existing)</option>
+                                <option value="No">No (New)</option>
+                                <option value="Not Sure">Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Locomotive Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="sameLocoClass">Are you going to use the same loco class for the entire route?</label>
+                            <select id="sameLocoClass" name="sameLocoClass">
+                                <option value="Yes" selected>Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="locoSourcing">Locomotive Sourcing: Where do you intend to source your locomotives?</label>
+                            <select id="locoSourcing" name="locoSourcing">
+                                <option value="Privately Owned" selected>Privately Owned</option>
+                                <option value="Privately Leased">Privately Leased</option>
+                                <option value="LeaseCo">LeaseCo</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="locomotiveConsist">Locomotive Consist: How many locomotives per type will run in a consist, consist composition description</label>
+                            <textarea id="locomotiveConsist" name="locomotiveConsist" rows="3">Head-end 6x22E + 200 Wagons</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Locomotive Characteristics</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Class</th>
+                                    <th>Traction Type</th>
+                                    <th>Mass</th>
+                                    <th>Max Tractive Effort</th>
+                                    <th>Max Electric Power Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" name="locoClass1" value="22E"></td>
+                                    <td>
+										<select name="locoTractionType1">
+											<option value="Diesel/Diesel-Electric">Diesel/Diesel-Electric</option>
+											<option value="Electric 25kV AC" selected>Electric 25kV AC</option>
+											<option value="Electric 3kV DC">Electric 3kV DC</option>
+											<option value="Electric Dual Voltage (3KV DC/25KV AC)">Electric 3kV DC</option>
+											<option value="Electric 50kV AC">Electric 50kV AC</option>
+											<option value="Other">Other</option>
+										</select>
+									</td>	
+                                    <td><input type="text" name="locoMass1" value="110ton"></td>
+                                    <td><input type="text" name="locoTractiveEffort1" value="480kN"></td>
+                                    <td><input type="text" name="locoElectricPower1" value="N/A"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" name="locoClass2" value=""></td>
+                                    <td>
+										<select name="locoTractionType2">
+											<option value=" "> </option>
+											<option value="Diesel/Diesel-Electric">Diesel/Diesel-Electric</option>
+											<option value="Electric 25kV AC" selected>Electric 25kV AC</option>
+											<option value="Electric 3kV DC">Electric 3kV DC</option>
+											<option value="Electric Dual Voltage (3KV DC/25KV AC)">Electric 3kV DC</option>
+											<option value="Electric 50kV AC">Electric 50kV AC</option>
+											<option value="Other">Other</option>
+										</select>
+									</td>
+                                    <td><input type="text" name="locoMass2" value=""></td>
+                                    <td><input type="text" name="locoTractiveEffort2" value=""></td>
+                                    <td><input type="text" name="locoElectricPower2" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><input type="text" name="locoClass3" value=""></td>
+                                    <td>
+										<select name="locoTractionType3">
+											<option value=" "> </option>
+											<option value="Diesel/Diesel-Electric">Diesel/Diesel-Electric</option>
+											<option value="Electric 25kV AC" selected>Electric 25kV AC</option>
+											<option value="Electric 3kV DC">Electric 3kV DC</option>
+											<option value="Electric Dual Voltage (3KV DC/25KV AC)">Electric 3kV DC</option>
+											<option value="Electric 50kV AC">Electric 50kV AC</option>
+											<option value="Other">Other</option>
+										</select>
+									</td>
+                                    <td><input type="text" name="locoMass3" value=""></td>
+                                    <td><input type="text" name="locoTractiveEffort3" value=""></td>
+                                    <td><input type="text" name="locoElectricPower3" value=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Wagon Details</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Type and Series</th>
+                                    <th>Length</th>
+                                    <th>Tare</th>
+                                    <th>Payload</th>
+                                    <th>No of Wagons per train</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" name="wagonType1" value="CCL-1"></td>
+                                    <td><input type="text" name="wagonLength1" value="12.07m"></td>
+                                    <td><input type="text" name="wagonTare1" value="20.82 ton"></td>
+                                    <td><input type="text" name="wagonPayload1" value="58 ton"></td>
+                                    <td><input type="text" name="wagonCount1" value="200"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" name="wagonType2" value=""></td>
+                                    <td><input type="text" name="wagonLength2" value=""></td>
+                                    <td><input type="text" name="wagonTare2" value=""></td>
+                                    <td><input type="text" name="wagonPayload2" value=""></td>
+                                    <td><input type="text" name="wagonCount2" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><input type="text" name="wagonType3" value=""></td>
+                                    <td><input type="text" name="wagonLength3" value=""></td>
+                                    <td><input type="text" name="wagonTare3" value=""></td>
+                                    <td><input type="text" name="wagonPayload3" value=""></td>
+                                    <td><input type="text" name="wagonCount3" value=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+
+                        <div class="form-group">
+                            <label for="wagonSourcing">Wagon Sourcing: Where do you intend to source your wagons?</label>
+                            <select id="wagonSourcing" name="wagonSourcing">
+                                <option value="Privately Owned" selected>Privately Owned</option>
+                                <option value="Privately Leased">Privately Leased</option>
+                                <option value="LeaseCo">LeaseCo</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label for="rollingStockDepots">List of Applicant's Rolling Stock Maintenance Depots and their locations</label>
+                            <textarea id="rollingStockDepots" name="rollingStockDepots" rows="3">Main depot located at Ermelo, Mpumalanga. Secondary depot at Richards Bay, KZN.</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Train Details</h3>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="sameTrainLength">Same train length for the entire route?</label>
+                                <select id="sameTrainLength" name="sameTrainLength">
+                                    <option value="Yes" selected>Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="maxTrainLength">Maximum Train Length (meters)</label>
+                                <input type="number" id="maxTrainLength" name="maxTrainLength" 
+                                    placeholder="Enter maximum train length" value="1500">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="minTrainLength">Minimum Train Length (meters)</label>
+                                <input type="number" id="minTrainLength" name="minTrainLength" 
+                                    placeholder="Enter minimum train length" value="1200">
+                            </div>
+                        </div>
+
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="grossTrainMass">Gross Train Mass in tons</label>
+                                <input type="number" id="grossTrainMass" name="grossTrainMass" 
+                                    placeholder="Enter gross train mass" value="18000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trainType">Train Type</label>
+                                <select id="trainType" name="trainType">
+                                    <option value="Freight" selected>Freight</option>
+                                    <option value="Passenger">Passenger</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="brakeType">Brake Type</label>
+                                <select id="brakeType" name="brakeType">
+                                    <option value="Airbrake" selected>Airbrake</option>
+                                    <option value="Vacuum Brake">Vacuum Brake</option>
+                                    <option value="Dual">Dual</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Commodity Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="commodityType">Commodity Type</label>
+                            <select id="commodityType" name="commodityType">
+                                <option value="Coal" selected>Coal</option>
+                                <option value="General">General</option>
+                                <option value="Block">Block</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="commoditiesDescription">Commodities to be Transported (Full description of the commodity)</label>
+                            <textarea id="commoditiesDescription" name="commoditiesDescription" rows="3">Thermal coal for export, grade RB1, with average calorific value of 6,000 kcal/kg</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Volumes Forecast</h3>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="dailyVolumes">Daily volumes</label>
+                                <input type="number" id="dailyVolumes" name="dailyVolumes" 
+                                       placeholder="Enter daily volumes" value="50000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weeklyVolumes">Weekly volumes</label>
+                                <input type="number" id="weeklyVolumes" name="weeklyVolumes" 
+                                       placeholder="Enter weekly volumes" value="350000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Unit of Measure (Tons)</label>
+                                <input type="text" value="Tons" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="three-column">
+                            <div class="form-group">
+                                <label for="monthlyVolumes">Monthly volumes</label>
+                                <input type="number" id="monthlyVolumes" name="monthlyVolumes" 
+                                       placeholder="Enter monthly volumes" value="1500000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="quarterlyVolumes">Quarterly volumes</label>
+                                <input type="number" id="quarterlyVolumes" name="quarterlyVolumes" 
+                                       placeholder="Enter quarterly volumes" value="4500000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="annualVolumes">Annual volumes</label>
+                                <input type="number" id="annualVolumes" name="annualVolumes" 
+                                       placeholder="Enter annual volumes" value="18000000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="uicCommodityCodes">UIC Commodity Codes</label>
+                            <input type="text" id="uicCommodityCodes" name="uicCommodityCodes" 
+                                   placeholder="Enter UIC commodity codes" value="COAL">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consignmentDetails">Consignment Details</label>
+                            <textarea id="consignmentDetails" name="consignmentDetails" rows="5">Thermal coal for export, grade RB1. Loading by conveyor belt system, offloading by rotary dumper. No special safety risks beyond standard coal handling procedures. All necessary licenses for coal transport and export have been obtained from RSR.</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Specify Commodity Environmental Risks: Please indicate the Annexures submitted</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="safetyManagementPlan" name="safetyManagementPlan" checked>
+                                    Safety Management Plan
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="environmentalManagementPlan" name="environmentalManagementPlan" checked>
+                                    Environmental Management Plan
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="riskAnalysis" name="riskAnalysis">
+                                    Risk Analysis
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Dangerous/Abnormal Loads Goods Details: Include the relevant information</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="safetyDataSheet" name="safetyDataSheet">
+                                    Safety Data Sheet
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="policeExplosivePermit" name="policeExplosivePermit">
+                                    Police Explosive Permit
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Applicant's Operating Characteristics and Requirements -->
+                <section class="form-section">
+                    <h2>4. Applicant's Operating Characteristics and Requirements</h2>
+                    <p class="note"><strong>Note:</strong> All the information in this section is tentative subject to Service Design consultation with the IM.</p>
+                    
+                    <div class="form-group">
+                        <label for="crewingMethodology">Description of the Crewing Methodology used by the Applicant</label>
+                        <textarea id="crewingMethodology" name="crewingMethodology" rows="3">Round trip working with crew changes at Ermelo. Crews work 8-hour shifts with mandatory rest periods between shifts.</textarea>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Ancillary services required</h3>
+                        
+                        <div class="form-group">
+                            
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessRefuelling" name="accessRefuelling" checked>
+                                    Access to locomotive refuelling depot
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessCleaning" name="accessCleaning" checked>
+                                    Access to cleaning and washing facilities (Rolling Stock)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessYardFacilities" name="accessYardFacilities" checked>
+                                    Access to Rail Yard facilities (electricity charging, water, access to maintenance depot next to yard, etc.)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessICT" name="accessICT">
+                                    Access to ICT (Fibre)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessWaitingAreas" name="accessWaitingAreas">
+                                    Access to waiting areas/lounges and ablution facilities
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessFreightTerminals" name="accessFreightTerminals">
+                                    Access to Freight terminals
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="accessStorageSidings" name="accessStorageSidings" checked>
+                                    Access to Storage sidings/rail yards/line (offering parking areas for Trains, rail wagons and Locomotives)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="leasingSidings" name="leasingSidings">
+                                    Leasing of siding, vacant properties and associated facility
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="wayLeave" name="wayLeave">
+                                    Way Leave
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="otherAncillary" name="otherAncillary">
+                                    Other (please specify)
+                                </label>
+                                <input type="text" id="otherAncillarySpecify" name="otherAncillarySpecify" 
+                                       placeholder="Specify other ancillary service" style="margin-top: 5px;">
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="enRouteChanges">List of En Route Train Configuration Changes (e.g. en route locations where train length will change, where train will be split or combined, etc.)</label>
+                            <textarea id="enRouteChanges" name="enRouteChanges" rows="3">Train will be combined at Ermelo yard from 3x 66-wagon trains to 1x 200-wagon train for the mainline haul to Richards Bay.</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>Applicant Operating Hours</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Days of week</th>
+                                    <th>Open (HH:MM)</th>
+                                    <th>Closed (HH:MM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td><input type="time" name="mondayOpen" value="06:00"></td>
+                                    <td><input type="time" name="mondayClose" value="22:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td><input type="time" name="tuesdayOpen" value="06:00"></td>
+                                    <td><input type="time" name="tuesdayClose" value="22:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td><input type="time" name="wednesdayOpen" value="06:00"></td>
+                                    <td><input type="time" name="wednesdayClose" value="22:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td><input type="time" name="thursdayOpen" value="06:00"></td>
+                                    <td><input type="time" name="thursdayClose" value="22:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td><input type="time" name="fridayOpen" value="06:00"></td>
+                                    <td><input type="time" name="fridayClose" value="22:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td><input type="time" name="saturdayOpen" value="08:00"></td>
+                                    <td><input type="time" name="saturdayClose" value="16:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td><input type="time" name="sundayOpen" value="08:00"></td>
+                                    <td><input type="time" name="sundayClose" value="16:00"></td>
+                                </tr>
+                                <tr>
+                                    <td>Public Holiday</td>
+                                    <td><input type="time" name="holidayOpen" value="08:00"></td>
+                                    <td><input type="time" name="holidayClose" value="16:00"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+
+                        <div class="form-group">
+                            <label for="railYardCapacity">Rail Yard and Capacity required (for all relevant yards on the route)</label>
+                            <textarea id="railYardCapacity" name="railYardCapacity" rows="3">Require capacity for 200-wagon trains at both Ermelo and Richards Bay terminals. Need storage for 3 locomotives at each location.</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-section">
+                        <h3>5. En Route Stoppage Point Details</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>    
+                                    <th>Location</th>
+                                    <th>Reason for Stoppage</th>
+                                    <th>Required Stoppage Time Duration (HH:MM)</th>
+                                    <th>Brief details about the required stoppage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" name="stoppageLocation1" value="Ermelo"></td>
+                                    <td>
+                                        <select name="stoppageReason1">
+                                            <option value="Stop to change traction">Stop to change traction</option>
+                                            <option value="Stop to re-man crew" selected>Stop to re-man crew</option>
+                                            <option value="Stop to re-fuel locomotive">Stop to re-fuel locomotive</option>
+                                            <option value="Stop for technical inspection/examination">Stop for technical inspection/examination</option>
+                                            <option value="Stop to change train configuration (split wagon blocks or combine wagon blocks)">Stop to change train configuration (split wagon blocks or combine wagon blocks)</option>
+                                            <option value="Stop to attach and/or detach wagons">Stop to attach and/or detach wagons</option>
+                                            <option value="Stop to attach/detach banking locomotives">Stop to attach/detach banking locomotives</option>
+                                            <option value="Stop to change locomotives from one end of the train to the other">Stop to change locomotives from one end of the train to the other</option>
+                                            <option value="Stop to let train in reverse direction pass (on single line)">Stop to let train in reverse direction pass (on single line)</option>
+                                            <option value="Stop for any other operational reasons">Stop for any other operational reasons</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="time" name="stoppageDuration1" value="01:30"></td>
+                                    <td><input type="text" name="stoppageDetails1" value="Crew change and locomotive inspection"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" name="stoppageLocation2" value="Ermelo"></td>
+                                    <td>
+                                        <select name="stoppageReason2">
+                                            <option value="Stop to change traction">Stop to change traction</option>
+                                            <option value="Stop to re-man crew" selected>Stop to re-man crew</option>
+                                            <option value="Stop to re-fuel locomotive">Stop to re-fuel locomotive</option>
+                                            <option value="Stop for technical inspection/examination">Stop for technical inspection/examination</option>
+                                            <option value="Stop to change train configuration (split wagon blocks or combine wagon blocks)">Stop to change train configuration (split wagon blocks or combine wagon blocks)</option>
+                                            <option value="Stop to attach and/or detach wagons">Stop to attach and/or detach wagons</option>
+                                            <option value="Stop to attach/detach banking locomotives">Stop to attach/detach banking locomotives</option>
+                                            <option value="Stop to change locomotives from one end of the train to the other">Stop to change locomotives from one end of the train to the other</option>
+                                            <option value="Stop to let train in reverse direction pass (on single line)">Stop to let train in reverse direction pass (on single line)</option>
+                                            <option value="Stop for any other operational reasons">Stop for any other operational reasons</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="time" name="stoppageDuration2" value="01:30"></td>
+                                    <td><input type="text" name="stoppageDetails2" value="Crew change and locomotive inspection"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><input type="text" name="stoppageLocation3" value="Ermelo"></td>
+                                    <td>
+                                        <select name="stoppageReason3">
+                                            <option value="Stop to change traction">Stop to change traction</option>
+                                            <option value="Stop to re-man crew" selected>Stop to re-man crew</option>
+                                            <option value="Stop to re-fuel locomotive">Stop to re-fuel locomotive</option>
+                                            <option value="Stop for technical inspection/examination">Stop for technical inspection/examination</option>
+                                            <option value="Stop to change train configuration (split wagon blocks or combine wagon blocks)">Stop to change train configuration (split wagon blocks or combine wagon blocks)</option>
+                                            <option value="Stop to attach and/or detach wagons">Stop to attach and/or detach wagons</option>
+                                            <option value="Stop to attach/detach banking locomotives">Stop to attach/detach banking locomotives</option>
+                                            <option value="Stop to change locomotives from one end of the train to the other">Stop to change locomotives from one end of the train to the other</option>
+                                            <option value="Stop to let train in reverse direction pass (on single line)">Stop to let train in reverse direction pass (on single line)</option>
+                                            <option value="Stop for any other operational reasons">Stop for any other operational reasons</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="time" name="stoppageDuration3" value="01:30"></td>
+                                    <td><input type="text" name="stoppageDetails3" value="Crew change and locomotive inspection"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 6. Applicant Track Access Charge Payment Method -->
+                <section class="form-section">
+                    <h2>6. Applicant Track Access Charge Payment Method</h2>
+                    
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod">
+                            <option value="Credit Guarantee" selected>Credit Guarantee</option>
+                            <option value="Cash Payment">Cash Payment</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TRIM Bank Account Details</label>
+                        <p>Bank: Rand Merchant Bank</p>
+                        <p>Account Name: Transnet Rail Infrastructure Manager Trade Receivable</p>
+                        <p>Account no: 63100763324</p>
+                        <p>Branch Name and no: Johannesburg 255005</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label agreement">
+                            <input type="checkbox" id="termsConditions" name="termsConditions" required 
+                                   data-validation="required-checkbox">
+                            I agree to comply with the terms and conditions governing this application process as outlined in the Network Statement *
+                        </label>
+                        <span class="error-message"></span>
+                    </div>
+                </section>
+
+                <!-- Submit Section -->
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">Submit Application</button>
+                    <button type="reset" id="resetBtn">Reset Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <h2>Application Submitted Successfully!</h2>
+            <p>Thank you for your application. We will review it and get back to you soon.</p>
+            <p><strong>Application ID:</strong> <span id="applicationId"></span></p>
+            <p><strong>Submitted at:</strong> <span id="submissionTime"></span></p>
+            <button type="button" id="exportPdfBtn">Export as PDF</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
